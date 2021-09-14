@@ -154,15 +154,17 @@ int main() {
 		
 		printf("jogue %s jogando com \"%c\"\n",name[turn], symbol[turn]);
 		do {
-			//printf("Linha: ")
-			scanf("%i %i",&movimentColumn, &movimentLine);
-			//printf("coluna: ")
+			printf("Linha: ");
+			scanf("%i", &movimentLine);
+			fflush(stdin);	
+			printf("Coluna: ");
+			scanf("%i", &movimentColumn);	
 			fflush(stdin);
-		}while(position[movimentColumn-1][movimentLine-1]!=' ' || isdigit(movimentColumn) || isdigit(movimentLine) );
+		}while(position[movimentLine-1][movimentColumn-1]!=' ' || isdigit(movimentColumn) || isdigit(movimentLine) );
 		
 		system("cls");
 		
-		position[movimentColumn-1][movimentLine-1]=symbol[turn];
+		position[movimentLine-1][movimentColumn-1]=symbol[turn];
 		
 		BoardGame(position);
 		
@@ -172,7 +174,9 @@ int main() {
 			printf("\nVencedor da rodada %s!\n",name[turn]);
 			system("pause");
 			system("cls");
+			
 		}
+		
 	}
 	
 	return 0;
