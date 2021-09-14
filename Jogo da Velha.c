@@ -3,6 +3,7 @@
 #include <time.h>
 #include <locale.h>
 #include <stdbool.h>
+#include <ctype.h>
 #define AREA 3
 
 void line() {
@@ -114,26 +115,9 @@ int CheckMovinemts(char position[3][3], char symbol[2], int letter)
 	return 0;	
 }
 
-int tablePoint(char position[9], char symbol[2],int letter) {
-	int i=0,point=0;
-	
-	//verificação de pontos horisontal
-	while(i<9) {
-		if(position[i]==symbol[letter])
-			point++;
-		if(point== 3)
-			return 1;
-		else
-			if(i==2 || i==5|| i==8) {
-				
-			}
-	}
-	
-}
-
 int main() {
 	char name[2][20],position[AREA][AREA], symbol[2]= {'X','O'};
-	int point[2]={0,0}, move, movimentLine,movimentColumn, turn;
+	int point[2]={0,0}, move= 0, movimentLine = 0,movimentColumn = 0, turn;
 	
 	setlocale(LC_ALL,"");
 	
@@ -174,7 +158,7 @@ int main() {
 			scanf("%i %i",&movimentColumn, &movimentLine);
 			//printf("coluna: ")
 			fflush(stdin);
-		}while(position[movimentColumn-1][movimentLine-1]!=' ');
+		}while(position[movimentColumn-1][movimentLine-1]!=' ' || isdigit(movimentColumn) || isdigit(movimentLine) );
 		
 		system("cls");
 		
@@ -189,8 +173,6 @@ int main() {
 			system("pause");
 			system("cls");
 		}
-		
-		
 	}
 	
 	return 0;
